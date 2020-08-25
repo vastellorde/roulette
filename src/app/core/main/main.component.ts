@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {HistoryService} from '../helpers/history.service';
 import {MoneyService} from '../helpers/money.service';
@@ -8,7 +8,8 @@ import {NotEnoughMoneyComponent} from '../../shared/not-enough-money/not-enough-
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainComponent implements OnInit {
   numbers: number[] = Array.apply(null, {length: 10}).map(Number.call, Number);

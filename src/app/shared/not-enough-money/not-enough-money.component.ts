@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
 import {MoneyService} from '../../core/helpers/money.service';
 
 @Component({
   selector: 'app-not-enough-money',
   templateUrl: './not-enough-money.component.html',
-  styleUrls: ['./not-enough-money.component.scss']
+  styleUrls: ['./not-enough-money.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NotEnoughMoneyComponent {
 
