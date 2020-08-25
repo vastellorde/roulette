@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
   <div class="container">
     <button mat-button [routerLink]="['/']">Roulette</button>
-    <span>Счет {{money}}$ <button mat-icon-button (click)="addMoney()"><mat-icon>add</mat-icon></button></span>
+    <span>Счет {{money$ | async}}$ <button mat-icon-button (click)="addMoney()"><mat-icon>add</mat-icon></button></span>
     <button mat-button [routerLink]="['/', 'history']">История игр</button>
   </div>
 </mat-toolbar>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {HistoryService} from '../helpers/history.service';
+import {MoneyService} from '../helpers/money.service';
+import {MatDialog} from '@angular/material/dialog';
+import {NotEnoughMoneyComponent} from '../../shared/not-enough-money/not-enough-money.component';
 
 @Component({
   selector: 'app-main',
@@ -9,18 +12,20 @@ import {HistoryService} from '../helpers/history.service';
 })
 export class MainComponent implements OnInit {
   numbers: number[] = Array.apply(null, {length: 10}).map(Number.call, Number);
-  money = 1000;
   formGroup: FormGroup;
   result = {
     color: null,
     multiplicity: null,
     number: null
   };
+  notEnough = false;
 
   lose = false;
 
   constructor(private fb: FormBuilder,
-              private historyService: HistoryService) {
+              private historyService: HistoryService,
+              private moneyService: MoneyService,
+              private dialog: MatDialog) {
     this.formGroup = fb.group({
       multiplicity: new FormControl(null, [Validators.required]),
       color: new FormControl(null, [Validators.required]),
@@ -30,13 +35,15 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.moneyService.noEnoughMoney$.subscribe(data => this.notEnough = data);
   }
 
   onSubmit(): void {
-    if (this.money < this.formGroup.controls.rate.value) {
+    this.moneyService.putMoney(+this.formGroup.controls.rate.value);
+    if (this.notEnough) {
+      this.dialog.open(NotEnoughMoneyComponent);
       return;
     }
-    this.money -= this.formGroup.controls.rate.value;
     this.result.color = Math.floor(Math.random() * 3);
     this.result.multiplicity = Math.floor(Math.random() * 2);
     this.result.number = Math.floor(Math.random() * 10);

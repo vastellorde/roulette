@@ -1,14 +1,22 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MoneyService} from './core/helpers/money.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  money = 1000;
+export class AppComponent implements OnInit {
+  money$: Observable<number>;
+  constructor(private moneyService: MoneyService) {
+  }
+
+  ngOnInit(): void {
+    this.money$ = this.moneyService.money$;
+  }
 
   addMoney(): void {
-    this.money += 1000;
+    this.moneyService.addMoney();
   }
 }
