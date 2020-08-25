@@ -22,7 +22,7 @@
       </div>
       <div class="bet__numbers">
         <mat-button-toggle-group formControlName="number" name="number" aria-label="numbers">
-          <mat-button-toggle [value]="number" *ngFor="let number of numbers">{{number}}</mat-button-toggle>
+          <mat-button-toggle [value]="number" [disabled]="isMultiple(number)" *ngFor="let number of numbers">{{number}}</mat-button-toggle>
         </mat-button-toggle-group>
       </div>
       <div class="bet__input">

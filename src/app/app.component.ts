@@ -47,4 +47,15 @@ export class AppComponent {
       }
     }
   }
+
+  isMultiple(value: number): boolean {
+    if (this.formGroup.controls.multiplicity.value === null) {
+      return;
+    }
+    if (+this.formGroup.controls.multiplicity.value === 0) {
+      return value % 2 === 0;
+    } else {
+      return value % 2 !== 0;
+    }
+  }
 }
