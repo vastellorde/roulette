@@ -10,21 +10,3 @@ mat-toolbar {
     }
   }
 }
-
-main {
-  .container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 1rem;
-    align-items: center;
-  }
-}
-
-.bet {
-  display: flex;
-
-  &__multiplicity, &__color {
-    margin-right: 2rem;
-  }
-
-}
