@@ -16,6 +16,8 @@ export class AppComponent {
     number: null
   };
 
+  lose = false;
+
   constructor(private fb: FormBuilder) {
     this.formGroup = fb.group({
       multiplicity: new FormControl(null, [Validators.required]),
@@ -36,11 +38,10 @@ export class AppComponent {
 
     for (const key of Object.keys(this.formGroup.controls)) {
       console.log(this.formGroup.controls[key]);
-      let isLosed = false;
       if (key in this.result) {
         if (this.result[key] !== this.formGroup.controls[key].value) {
           console.log('Проиграл');
-          isLosed = true;
+          this.lose = true;
           break;
         }
       }

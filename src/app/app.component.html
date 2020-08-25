@@ -29,15 +29,19 @@
         <mat-form-field appearance="outline">
           <mat-label>Ваша ставка</mat-label>
           <input matInput formControlName="rate" type="number">
-          <button type="submit" mat-icon-button matSuffix><mat-icon>check_circle_outline
-          </mat-icon></button>
+          <button type="submit" mat-icon-button matSuffix>
+            <mat-icon>check_circle_outline
+            </mat-icon>
+          </button>
         </mat-form-field>
       </div>
     </form>
     <div class="bet-result">
-      <span>Результат: <ng-container *ngIf="result.multiplicity !== null">
-        {{result.multiplicity | multiplicity}} {{result.color | color}} {{result.number}}
-      </ng-container></span>
+      <span>Результат:
+        <ng-container *ngIf="result.multiplicity !== null">
+          {{result.multiplicity | multiplicity}} {{result.color | color}} {{result.number}} {{lose ? 'Вы проиграли' : 'Вы выйграли'}}
+        </ng-container>
+      </span>
     </div>
   </div>
 </main>
