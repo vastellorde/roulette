@@ -3,6 +3,7 @@
   flex-direction: column;
   margin-top: 1rem;
   align-items: center;
+  padding: 0 16px;
 }
 
 .bet {
@@ -11,6 +12,7 @@
 
   .top {
     display: flex;
+    flex-wrap: wrap;
   }
 
   &__multiplicity, &__color {

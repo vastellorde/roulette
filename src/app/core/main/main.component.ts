@@ -40,6 +40,9 @@ export class MainComponent implements OnInit {
   }
 
   onSubmit(): void {
+    if (this.formGroup.invalid) {
+      return;
+    }
     this.moneyService.putMoney(+this.formGroup.controls.rate.value);
     if (this.notEnough) {
       this.dialog.open(NotEnoughMoneyComponent);

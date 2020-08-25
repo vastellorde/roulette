@@ -1,12 +1,45 @@
+@import "common";
+
 mat-toolbar {
   .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  @include breakpoint(mobile) {
+    mat-toolbar-row {
+      &:first-of-type {
+        span {
+          display: none !important;
+        }
+        button {
+          &:last-of-type {
+            display: none;
+          }
+        }
+      }
 
-    span {
-      display: flex;
-      align-items: center;
+      &:last-of-type {
+        display: flex;
+        justify-content: space-between;
+
+        span {
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  @include breakpoint(desktop) {
+    mat-toolbar-row {
+      span {
+        display: flex;
+        align-items: center;
+      }
+      &:last-of-type {
+        display: none;
+      }
     }
   }
 }
