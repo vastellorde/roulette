@@ -35,7 +35,9 @@
       </div>
     </form>
     <div class="bet-result">
-      <span>Результат: {{result.multiplicity | multiplicity}} {{result.color | color}} {{result.number}}</span>
+      <span>Результат: <ng-container *ngIf="result.multiplicity !== null">
+        {{result.multiplicity | multiplicity}} {{result.color | color}} {{result.number}}
+      </ng-container></span>
     </div>
   </div>
 </main>

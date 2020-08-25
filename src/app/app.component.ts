@@ -26,9 +26,24 @@ export class AppComponent {
   }
 
   onSubmit(): void {
+    if (this.money < this.formGroup.controls.rate.value) {
+      return;
+    }
     this.money -= this.formGroup.controls.rate.value;
     this.result.color = Math.floor(Math.random() * 3);
     this.result.multiplicity = Math.floor(Math.random() * 2);
     this.result.number = Math.floor(Math.random() * 10);
+
+    for (const key of Object.keys(this.formGroup.controls)) {
+      console.log(this.formGroup.controls[key]);
+      let isLosed = false;
+      if (key in this.result) {
+        if (this.result[key] !== this.formGroup.controls[key].value) {
+          console.log('Проиграл');
+          isLosed = true;
+          break;
+        }
+      }
+    }
   }
 }
