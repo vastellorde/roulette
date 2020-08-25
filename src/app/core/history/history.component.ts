@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HistoryService} from '../helpers/history.service';
 
 @Component({
   selector: 'app-history',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./history.component.scss']
 })
 export class HistoryComponent implements OnInit {
+  gameHistory: any[];
+  displayedColumns = ['gameId', 'rate', 'lose'];
 
-  constructor() { }
+  constructor(
+    private historyService: HistoryService
+  ) { }
 
   ngOnInit(): void {
+    this.gameHistory = this.historyService.getGameHistory();
+    console.log(this.gameHistory);
   }
 
 }

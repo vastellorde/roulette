@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {HistoryService} from '../helpers/history.service';
 
 @Component({
   selector: 'app-main',
@@ -18,7 +19,8 @@ export class MainComponent implements OnInit {
 
   lose = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private historyService: HistoryService) {
     this.formGroup = fb.group({
       multiplicity: new FormControl(null, [Validators.required]),
       color: new FormControl(null, [Validators.required]),
@@ -45,6 +47,7 @@ export class MainComponent implements OnInit {
         if (this.result[key] !== this.formGroup.controls[key].value) {
           console.log('Проиграл');
           this.lose = true;
+          this.historyService.addGame(+this.formGroup.controls.rate.value, this.lose);
           break;
         }
       }

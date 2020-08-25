@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HistoryComponent } from './history.component';
 import {RouterModule} from '@angular/router';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -14,7 +15,8 @@ import {RouterModule} from '@angular/router';
         path: '',
         component: HistoryComponent
       }
-    ])
+    ]),
+    MatTableModule
   ]
 })
 export class HistoryModule { }
