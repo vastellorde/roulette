@@ -1,12 +1,41 @@
-<header></header>
+<mat-toolbar color="primary">
+  <div class="container">
+    <span>Roulette</span>
+    <span>Счет {{money}}$ <button mat-icon-button><mat-icon>add</mat-icon></button></span>
+  </div>
+</mat-toolbar>
 <main>
-  <div class="bet">
-    <div class="bet__multiplicity"></div>
-    <div class="bet__color"></div>
-    <div class="bet_numbers"></div>
+  <div class="container">
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="bet">
+      <div class="bet__multiplicity">
+        <mat-button-toggle-group formControlName="multiplicity" vertical name="multiplicity" aria-label="multiplicity">
+          <mat-button-toggle [value]="0">Четное</mat-button-toggle>
+          <mat-button-toggle [value]="1">Нечетное</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div class="bet__color">
+        <mat-button-toggle-group formControlName="color" vertical name="color" aria-label="color">
+          <mat-button-toggle [value]="0">Красное</mat-button-toggle>
+          <mat-button-toggle [value]="1">Черное</mat-button-toggle>
+          <mat-button-toggle [value]="2">Зеленый</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div class="bet__numbers">
+        <mat-button-toggle-group formControlName="number" name="number" aria-label="numbers">
+          <mat-button-toggle [value]="number" *ngFor="let number of numbers">{{number}}</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div class="bet__input">
+        <mat-form-field appearance="outline">
+          <mat-label>Ваша ставка</mat-label>
+          <input matInput formControlName="rate" type="number">
+          <button type="submit" mat-icon-button matSuffix><mat-icon>check_circle_outline
+          </mat-icon></button>
+        </mat-form-field>
+      </div>
+    </form>
+    <div class="bet-result">
+      <span>Результат: {{result.multiplicity | multiplicity}} {{result.color | color}} {{result.number}}</span>
+    </div>
   </div>
-  <div class="bet-input">
-    <input type="text" placeholder="Ваша ставка">
-  </div>
-  <div class="bet-result"></div>
 </main>

@@ -1,0 +1,30 @@
+mat-toolbar {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+main {
+  .container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    align-items: center;
+  }
+}
+
+.bet {
+  display: flex;
+
+  &__multiplicity, &__color {
+    margin-right: 2rem;
+  }
+
+}
