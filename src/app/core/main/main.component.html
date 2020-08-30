@@ -9,13 +9,13 @@
       </div>
       <div class="bet__color">
         <mat-button-toggle-group formControlName="color" vertical name="color" aria-label="color">
-          <mat-button-toggle [value]="0">Красное</mat-button-toggle>
-          <mat-button-toggle [value]="1">Черное</mat-button-toggle>
-          <mat-button-toggle [value]="2">Зеленый</mat-button-toggle>
+          <mat-button-toggle value="red">Красное</mat-button-toggle>
+          <mat-button-toggle value="black">Черное</mat-button-toggle>
+          <mat-button-toggle value="green">Зеленый</mat-button-toggle>
         </mat-button-toggle-group>
       </div>
       <div class="bet__numbers">
-        <mat-button-toggle-group formControlName="number" name="number" aria-label="numbers">
+        <mat-button-toggle-group class="numbers" formControlName="number" name="number" aria-label="numbers">
           <mat-button-toggle [value]="number" [disabled]="isMultiple(number)" *ngFor="let number of numbers">{{number}}</mat-button-toggle>
         </mat-button-toggle-group>
       </div>
@@ -31,11 +31,131 @@
       </mat-form-field>
     </div>
   </form>
-  <div class="bet-result">
-      <span>Результат:
-        <ng-container *ngIf="result.multiplicity !== null">
-          {{result.multiplicity | multiplicity}} {{result.color | color}} {{result.number}} {{lose ? 'Вы проиграли' : 'Вы выйграли'}}
-        </ng-container>
-      </span>
+  <div class="main">
+    <div class="plate" id="plate">
+      <ul #inner class="inner" [attr.data-spinto]="random">
+        <li class="number"><label>
+          <input type="radio" name="pit" value="32" [checked]="random === 32" /><span class="pit">32</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="15" [checked]="random === 15" /><span class="pit">15</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="19" [checked]="random === 19" /><span class="pit">19</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="4" [checked]="random === 4" /><span class="pit">4</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="21" [checked]="random === 21" /><span class="pit">21</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="2" [checked]="random === 2" /><span class="pit">2</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="25" [checked]="random === 25" /><span class="pit">25</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="17" [checked]="random === 17" /><span class="pit">17</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="34" [checked]="random === 34" /><span class="pit">34</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="6" [checked]="random === 6" /><span class="pit">6</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="27" [checked]="random === 27" /><span class="pit">27</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="13" [checked]="random === 13" /><span class="pit">13</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="36" [checked]="random === 36" /><span class="pit">36</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="11" [checked]="random === 11" /><span class="pit">11</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="30" [checked]="random === 30" /><span class="pit">30</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="8" [checked]="random === 8" /><span class="pit">8</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="23" [checked]="random === 23" /><span class="pit">23</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="10" [checked]="random === 10" /><span class="pit">10</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="5" [checked]="random === 5" /><span class="pit">5</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="24" [checked]="random === 24" /><span class="pit">24</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="16" [checked]="random === 16" /><span class="pit">16</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="33" [checked]="random === 33" /><span class="pit">33</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="1" [checked]="random === 1" /><span class="pit">1</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="20" [checked]="random === 20" /><span class="pit">20</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="14" [checked]="random === 14" /><span class="pit">14</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="31" [checked]="random === 31" /><span class="pit">31</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="9" [checked]="random === 9" /><span class="pit">9</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="22" [checked]="random === 22" /><span class="pit">22</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="18" [checked]="random === 18" /><span class="pit">18</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="29" [checked]="random === 29" /><span class="pit">29</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="7" [checked]="random === 7" /><span class="pit">7</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="28" [checked]="random === 28" /><span class="pit">28</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="12" [checked]="random === 12" /><span class="pit">12</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="35" [checked]="random === 35" /><span class="pit">35</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="3" [checked]="random === 3" /><span class="pit">3</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="26" [checked]="random === 26" /><span class="pit">26</span>
+        </label></li>
+        <li class="number"><label>
+          <input type="radio" name="pit" value="0" [checked]="random === 0" /><span class="pit">0</span>
+        </label></li>
+      </ul>
+      <div #data class="data">
+        <div class="data-inner">
+          <div class="mask"></div>
+          <div class="result">
+            <div class="result-number">00</div>
+            <div class="result-color">red</div>
+            <div *ngIf="lose">Проигрышь</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
